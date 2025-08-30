@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mess Voting — Admin</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Admin Tools</h1>
+    <p class="subtitle">Manage pre‑approved menu items</p>
+  </header>
+
+  <main class="container grid">
+    <!-- Add Item -->
+    <section class="card">
+      <h2>Add Menu Item</h2>
+      <form id="add-form">
+        <label for="add-name">Item Name</label>
+        <input id="add-name" required placeholder="e.g. Paneer Butter Masala" />
+
+        <label class="row">
+          <input id="add-available" type="checkbox" checked />
+          <span>Available</span>
+        </label>
+
+        <label for="add-pass">Admin Password</label>
+        <input id="add-pass" type="password" placeholder="••••••" required />
+
+        <button class="btn" type="submit">Add Item</button>
+        <p id="add-msg" class="msg"></p>
+      </form>
+    </section>
+
+    <!-- Toggle Availability -->
+    <section class="card">
+      <h2>Update Availability</h2>
+      <form id="toggle-form">
+        <label for="toggle-name">Item Name</label>
+        <input id="toggle-name" required placeholder="exact item name" />
+
+        <label class="row">
+          <input id="toggle-available" type="checkbox" />
+          <span>Set as Available</span>
+        </label>
+
+        <label for="toggle-pass">Admin Password</label>
+        <input id="toggle-pass" type="password" placeholder="••••••" required />
+
+        <button class="btn" type="submit">Update</button>
+        <p id="toggle-msg" class="msg"></p>
+      </form>
+    </section>
+
+    <!-- View All -->
+    <section class="card">
+      <h2>All Items (for reference)</h2>
+      <button id="refreshAll" class="btn btn-secondary">Refresh</button>
+      <ul id="all-list" class="list"></ul>
+    </section>
+  </main>
+
+  <footer class="container footnote">
+    <a class="link" href="index.html">← Back to Voting</a>
+  </footer>
+
+  <script src="admin.js" defer></script>
+</body>
+</html>
