@@ -5,6 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mess Voting — Admin</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .switch {
+      appearance: none;
+      width: 46px; height: 26px;
+      background: #3a4366;
+      border-radius: 20px;
+      position: relative;
+      outline: none;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.15);
+      transition: background .2s ease;
+    }
+    .switch::after {
+      content: "";
+      position: absolute; top: 3px; left: 3px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: white;
+      transition: transform .2s ease;
+    }
+    .switch:checked { background: #6aa0ff; }
+    .switch:checked::after { transform: translateX(20px); }
+    .row-end { display: flex; align-items: center; gap: 12px; }
+    .small { font-size: .85rem; color: var(--muted); }
+    .grid-two { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; }
+  </style>
 </head>
 <body>
   <header class="container">
@@ -12,7 +37,7 @@
     <p class="subtitle">Manage pre‑approved menu items</p>
   </header>
 
-  <main class="container grid">
+  <main class="container grid-two">
     <!-- Add Item -->
     <section class="card">
       <h2>Add Menu Item</h2>
@@ -33,31 +58,20 @@
       </form>
     </section>
 
-    <!-- Toggle Availability -->
+    <!-- All Items with Toggles -->
     <section class="card">
-      <h2>Update Availability</h2>
-      <form id="toggle-form">
-        <label for="toggle-name">Item Name</label>
-        <input id="toggle-name" required placeholder="exact item name" />
-
-        <label class="row">
-          <input id="toggle-available" type="checkbox" />
-          <span>Set as Available</span>
-        </label>
-
-        <label for="toggle-pass">Admin Password</label>
-        <input id="toggle-pass" type="password" placeholder="••••••" required />
-
-        <button class="btn" type="submit">Update</button>
-        <p id="toggle-msg" class="msg"></p>
-      </form>
-    </section>
-
-    <!-- View All -->
-    <section class="card">
-      <h2>All Items (for reference)</h2>
-      <button id="refreshAll" class="btn btn-secondary">Refresh</button>
+      <h2>All Items (toggle availability)</h2>
+      <div class="row-end" style="justify-content: space-between; margin-bottom:8px;">
+        <div class="row-end">
+          <button id="refreshAll" class="btn btn-secondary">Refresh</button>
+        </div>
+        <div class="row-end">
+          <label for="admin-pass-list" class="small">Admin Password</label>
+          <input id="admin-pass-list" type="password" placeholder="••••••" style="width:220px;" />
+        </div>
+      </div>
       <ul id="all-list" class="list"></ul>
+      <p id="toggle-msg" class="msg"></p>
     </section>
   </main>
 
